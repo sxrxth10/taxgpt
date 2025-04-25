@@ -1,0 +1,4 @@
+taxgpt/.env
+taxgpt-key.pem
+taxgptservices.pem
+venv

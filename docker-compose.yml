@@ -1,0 +1,33 @@
+services:
+  vector-db:
+    build: ./vector_db
+    container_name: vector-db-container
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./vector_db/.env
+    volumes:
+      - ./vector_db/vector_store:/app/vector_store
+    restart: always
+
+  backend:
+    build: ./taxgpt
+    container_name: backend-container
+    ports:
+      - "8000:8000"
+    depends_on:
+      - vector-db
+    env_file:
+      - ./taxgpt/.env
+    restart: always
+
+  frontend:
+    build: ./taxgpt_frontend
+    container_name: frontend-container
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    restart: always
+
+
