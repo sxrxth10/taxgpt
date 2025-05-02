@@ -1,19 +1,29 @@
 import requests
 import streamlit as st
 
-# Function to fetch response from the backend
+
 def get_response(input_text):
     try:
         response = requests.post(
-            "http://52.66.236.117:8000/response",
+            "http://3.109.157.165:8000/response",
+
             json={"question": input_text}
         )
         response.raise_for_status()
-        return response.json()
+        response_data = response.json()
+        print("API response:", response_data)
+        return {"generation": response_data.get
+                ("generation", "No answer received.")}
+    except requests.exceptions.HTTPError as e:
+        return {"generation": f"HTTP Error: {str(e)}"}
     except requests.exceptions.RequestException as e:
-        return {"generation": "Error: Unable to fetch the response. Please try again later."}
+        return {"generation": f"Error: Unable to fetch the response. {str(e)}"}
+    except ValueError as e:
+        return {"generation": f"Error: Invalid response format. {str(e)}"}
 
 # Set up Streamlit UI
+
+
 st.set_page_config(
     page_title="Tax Assistance",
     page_icon="",
@@ -43,7 +53,7 @@ query = st.text_input(
     placeholder="E.g., What are the tax slabs for FY 2023-24?"
 )
 
-# Submit button
+# Submit buttonz
 if st.button("Get Answer") and query:
     with st.spinner("Fetching your answer..."):
         response = get_response(query)

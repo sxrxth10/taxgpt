@@ -3,3 +3,5 @@ vectordb/.env
 taxgpt-key.pem
 taxgptservices.pem
 venv
+taxenv
+taxgpt.pem

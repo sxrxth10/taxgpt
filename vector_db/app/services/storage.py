@@ -4,12 +4,15 @@ from ..core.config import settings
 import os
 
 
-embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key=settings.GOOGLE_API_KEY)
+embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001",
+                                          google_api_key=settings.GOOGLE_API_KEY)
 
-vector_db_path = "/app/vector_store"
+vector_db_path = "vector_store"
 
 if os.path.exists(vector_db_path):
-    vector_store = FAISS.load_local(vector_db_path, embeddings=embeddings,allow_dangerous_deserialization=True)
+    vector_store = FAISS.load_local(vector_db_path,
+                                    embeddings=embeddings,
+                                    allow_dangerous_deserialization=True)
     retriever = vector_store.as_retriever(
         search_type="similarity_score_threshold",
         search_kwargs={"score_threshold": 0.5}
@@ -19,5 +22,6 @@ else:
 
 
 retriever = vector_store.as_retriever(
-    search_type="similarity_score_threshold", search_kwargs={"score_threshold": 0.5}
+    search_type="similarity_score_threshold",
+    search_kwargs={"score_threshold": 0.5}
 )

@@ -6,7 +6,7 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="collapsed"
 )
-# Custom CSS 
+# Custom CSS
 st.markdown("""
     <style>
     body {
@@ -16,7 +16,7 @@ st.markdown("""
         padding: 0;
     }
     .header {
-        background-color: #000000;   
+        background-color: #000000;
         padding: 20px;
         color: white;
         font-family: Söhne, sans-serif;
@@ -128,8 +128,10 @@ st.markdown("""
 st.markdown("""
 <div id="about" class="section">
     <h2>About</h2>
-    <p>Our platform is designed to provide precise and reliable answers to all your tax-related questions. 
-    Powered by Retrieval-Augmented Generation (RAG), it delivers real-time, personalized assistance.</p>
+    <p>Our platform is designed to provide precise and reliable answers to all
+             your tax-related questions.
+    Powered by Retrieval-Augmented Generation (RAG), it delivers real-time,
+             personalized assistance.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -149,11 +151,12 @@ st.markdown("""
 st.markdown("""
 <div id="how-it-works" class="section">
     <h2>How It Works</h2>
-    <p>Our tool uses advanced document embeddings and AI models to retrieve, process, and answer your queries 
-    in real-time. Whether you have PDFs, web searches, or custom documents, we’ve got you covered.</p>
+    <p>Our tool uses advanced document embeddings and AI models to retrieve,
+             process, and answer your queries
+    in real-time. Whether you have PDFs, web searches, or custom documents,
+             we’ve got you covered.</p>
 </div>
 """, unsafe_allow_html=True)
-
 
 
 # Footer
@@ -162,5 +165,3 @@ st.markdown("""
     <p>© 2025 Your Personal Tax Assistant. All rights reserved.</p>
 </div>
 """, unsafe_allow_html=True)
-
-

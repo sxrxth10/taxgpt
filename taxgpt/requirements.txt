@@ -9,3 +9,4 @@ google-generativeai
 python-dotenv
 tiktoken
 langchain_google_genai
+langchain_openai
